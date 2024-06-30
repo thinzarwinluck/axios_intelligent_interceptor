@@ -16,7 +16,7 @@ service.defaults.headers.post["Content-Type"] = "multipart/form-data";
 //request with interceptors for all api request including token
 service.interceptors.request.use(function (config) {
   const token = JSON.parse(window.localStorage.getItem("token"));
-  config.headers.Authorization = token ? `Bearer ${token.access_token}` : "";
+  config.headers.Authorization = token ? `Bearer ${token}` : "";
 
   return config;
 });
@@ -32,7 +32,7 @@ service.interceptors.response.use(
         const config = error.config;
         const token = JSON.parse(window.localStorage.getItem("token"));
         config.headers.Authorization = token
-          ? `Bearer ${token.access_token}`
+          ? `Bearer ${token}`
           : "";
         return axios.request(config);
       } catch (refreshError) {
