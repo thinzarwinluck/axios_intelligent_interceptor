@@ -7,7 +7,7 @@ const apiVersion = import.meta.env.VITE_API_VERSION; // call the version of your
 //create the service to call the api
 const service = axios.create({
   baseURL: `${serverApiUrl}${apiVersion}`,
-  withCredentials: true,
+  withCredentials: true, // allow (CORS) requests with credentials like cookies and HTTP authentication. 
 });
 
 service.defaults.timeout = import.meta.env.VITE_API_TIMEOUT;
